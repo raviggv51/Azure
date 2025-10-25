@@ -1,0 +1,9 @@
+{
+	"name": "spotifyadf25",
+	"location": "southindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "3eedac0d-795a-492c-a639-5ce6931cb99a",
+		"tenantId": "4ae21c93-c62b-4c20-af66-0a44c760fe49"
+	}
+}
