@@ -132,6 +132,17 @@
 				}
 			}
 		],
+		"parameters": {
+			"schema": {
+				"type": "string"
+			},
+			"table": {
+				"type": "string"
+			},
+			"cdc_col": {
+				"type": "string"
+			}
+		},
 		"variables": {
 			"current": {
 				"type": "String"
