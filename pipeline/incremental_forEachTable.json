@@ -188,7 +188,10 @@
 														"value": "@{item().table}",
 														"type": "Expression"
 													},
-													"file": "@concat(pipeline().parameters.table,'_',variables('current'))"
+													"file": {
+														"value": "@concat(item().table,'_',variables('current'))",
+														"type": "Expression"
+													}
 												}
 											},
 											"logStorageSettings": {
@@ -320,6 +323,35 @@
 							}
 						}
 					]
+				}
+			},
+			{
+				"name": "Alert",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "ForEach1",
+						"dependencyConditions": [
+							"Succeeded",
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "POST",
+					"url": "https://prod-12.southindia.logic.azure.com:443/workflows/3626e7419876420ea90aac59c35b2261/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=ay1TzKy2lc1DbZOk8GJYfYpKFaYkkZvBcRkhDRdzd0M",
+					"body": {
+						"value": "{\n\"pipeline_name\" : \"@{pipeline().Pipeline}\",\n\"pipeline_runId\" : \"@{pipeline().RunId}\"\n}",
+						"type": "Expression"
+					}
 				}
 			}
 		],
