@@ -68,12 +68,9 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"container": "bronze",
-							"folder": {
-								"value": "Users",
-								"type": "Expression"
-							},
+							"folder": "Users",
 							"file": {
-								"value": "@concat(pipeline().parameters.table,'_',variables('current'))",
+								"value": "@concat(pipeline().parameters.table,'_',variables('current'))\n",
 								"type": "Expression"
 							}
 						}
@@ -171,10 +168,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"container": "bronze",
-										"folder": {
-											"value": "Users",
-											"type": "Expression"
-										},
+										"folder": "User",
 										"file": "@concat(pipeline().parameters.table,'_',variables('current'))"
 									}
 								},
