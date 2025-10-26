@@ -146,6 +146,10 @@
 				],
 				"userProperties": [],
 				"typeProperties": {
+					"expression": {
+						"value": "@greater(activity('Copy data1').output.dataRead,0)",
+						"type": "Expression"
+					},
 					"ifFalseActivities": [
 						{
 							"name": "delete_empty",
@@ -170,6 +174,12 @@
 											"type": "Expression"
 										},
 										"file": "@concat(pipeline().parameters.table,'_',variables('current'))"
+									}
+								},
+								"logStorageSettings": {
+									"linkedServiceName": {
+										"referenceName": "DataLake1_LS",
+										"type": "LinkedServiceReference"
 									}
 								},
 								"enableLogging": true,
